@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 30% 5%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 25% 8%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 42 100% 55%;
+    --primary-foreground: 220 30% 5%;
+
+    --secondary: 207 100% 30%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 207 100% 30%;
+    --accent-foreground: 210 20% 92%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 16%;
+    --input: 220 20% 16%;
+    --ring: 42 100% 55%;
+
+    --radius: 0.5rem;
+
+    --amber-glow: 42 100% 55%;
+    --blue-highlight: 207 100% 30%;
+    --deep-bg: 220 35% 3%;
+    --card-hover: 220 25% 12%;
+
+    --sidebar-background: 220 30% 5%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 42 100% 55%;
+    --sidebar-primary-foreground: 220 30% 5%;
+    --sidebar-accent: 220 20% 14%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 20% 16%;
+    --sidebar-ring: 42 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-glow-amber {
+    text-shadow: 0 0 20px hsl(42 100% 55% / 0.5), 0 0 40px hsl(42 100% 55% / 0.2);
+  }
+
+  .border-glow-amber {
+    box-shadow: 0 0 15px hsl(42 100% 55% / 0.15), inset 0 0 15px hsl(42 100% 55% / 0.05);
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, hsl(220 35% 3%) 0%, hsl(220 30% 5%) 50%, hsl(220 35% 3%) 100%);
+  }
+
+  .bg-gradient-hero {
+    background: radial-gradient(ellipse at 50% 30%, hsl(207 100% 30% / 0.15) 0%, transparent 60%),
+                linear-gradient(180deg, hsl(220 35% 3%) 0%, hsl(220 30% 6%) 100%);
+  }
+}
