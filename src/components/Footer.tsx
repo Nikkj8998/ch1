@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
         <div>
           <Link to="/" className="flex items-center mb-4">
-            <div className="w-16 h-16">
+            <div className="w-24 h-24 md:w-28 md:h-28">
               <img
                 src="/images/logo.png"
                 alt="CarbonHive Logo"

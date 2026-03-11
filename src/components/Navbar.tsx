@@ -61,7 +61,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/contact"
-              className="px-5 py-2 bg-primary text-primary-foreground font-display font-semibold rounded-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 text-sm"
+              className="px-5 py-2 bg-[hsl(142_70%_50%)] text-white font-display font-semibold rounded-md hover:bg-[hsl(142_70%_45%)] transition-all duration-300 text-sm"
             >
               Request a Quote
             </Link>
@@ -105,7 +105,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 px-8 py-3 bg-primary text-primary-foreground font-display font-bold rounded-md text-lg"
+                className="mt-4 px-8 py-3 bg-[hsl(142_70%_50%)] text-white font-display font-bold rounded-md text-lg hover:bg-[hsl(142_70%_45%)] transition-all duration-300"
               >
                 Request a Quote
               </Link>
