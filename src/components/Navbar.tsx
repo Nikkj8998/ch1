@@ -36,9 +36,9 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <div className="w-20 h-20 md:w-24 md:h-24 relative">
+            <div className="w-24 h-24 md:w-28 md:h-28 relative">
               {/* Replace this with your actual logo image */}
               <img
                 src="/images/logo.png"

@@ -5,13 +5,14 @@ const Footer = () => {
     <footer className="border-t border-border bg-card/30 py-12 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
         <div>
-          <Link to="/" className="flex items-center gap-2 mb-4">
-            <div className="w-6 h-6">
-              <svg viewBox="0 0 40 40" className="w-full h-full">
-                <polygon points="20,2 37,11 37,29 20,38 3,29 3,11" fill="none" stroke="hsl(42 100% 55%)" strokeWidth="2" />
-              </svg>
+          <Link to="/" className="flex items-center mb-4">
+            <div className="w-16 h-16">
+              <img
+                src="/images/logo.png"
+                alt="CarbonHive Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <span className="font-display text-xl font-bold text-primary">CarbonHive</span>
           </Link>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Process Solution Architects specializing in milling, mixing, and air pollution control equipment.
