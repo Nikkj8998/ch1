@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", industry: "", requirements: "" });
@@ -125,7 +126,7 @@ const Contact = () => {
               </p>
               <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_70%_35%)] hover:bg-[hsl(142_70%_40%)] text-foreground font-semibold text-sm transition-colors">
-                <MessageCircle className="w-4 h-4" />
+                <SiWhatsapp className="w-4 h-4" />
                 WhatsApp for Spares
               </a>
             </div>

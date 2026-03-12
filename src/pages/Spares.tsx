@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import Navbar from "@/components/Navbar";
@@ -232,7 +233,7 @@ const Spares = () => {
             </div>
             <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_70%_35%)] hover:bg-[hsl(142_70%_40%)] text-foreground font-semibold text-sm transition-colors shrink-0">
-              <MessageCircle className="w-4 h-4" />
+              <SiWhatsapp className="w-4 h-4" />
               WhatsApp for Spares
             </a>
           </div>
@@ -323,7 +324,7 @@ const SpareCard = ({ part, index }: { part: SparePart; index: number }) => (
       <p className="text-xs text-muted-foreground leading-relaxed flex-1">{part.detail}</p>
       <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
         className="mt-3 inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline self-start">
-        <MessageCircle className="w-3.5 h-3.5" />
+        <SiWhatsapp className="w-3.5 h-3.5" />
         Enquire Now
       </a>
     </div>

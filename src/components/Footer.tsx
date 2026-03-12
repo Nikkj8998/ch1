@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SiWhatsapp } from "react-icons/si";
 
 const Footer = () => {
   return (
@@ -49,9 +50,10 @@ const Footer = () => {
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-[hsl(142_70%_50%)] hover:text-[hsl(142_70%_60%)] transition-colors"
+              className="inline-flex items-center gap-2 text-[hsl(142_70%_50%)] hover:text-[hsl(142_70%_60%)] transition-colors"
             >
-              WhatsApp for Spares →
+              <SiWhatsapp className="w-4 h-4" />
+              WhatsApp for Spares
             </a>
           </div>
         </div>
