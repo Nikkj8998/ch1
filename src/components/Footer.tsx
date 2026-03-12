@@ -60,7 +60,15 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} CarbonHive. All rights reserved.
+        © {new Date().getFullYear()} CarbonHive. All rights reserved. &nbsp;·&nbsp; Designed by{" "}
+        <a
+          href="https://www.cybaemtech.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground hover:text-[hsl(142_60%_28%)] transition-colors duration-200"
+        >
+          Cybaem Tech
+        </a>
       </div>
     </footer>
   );
