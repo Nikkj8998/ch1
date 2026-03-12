@@ -15,22 +15,8 @@ const whatWeDo = [
 
 const csrPillars = [
   {
-    icon: Leaf,
-    num: "01",
-    title: "Environmental Sustainability",
-    subtitle: "Engineer for longevity, not replacement",
-    points: [
-      "High-efficiency grinding and classification systems",
-      "Long-life, wear-resistant spare parts for harsh conditions",
-      "Energy-optimised equipment reducing costs and carbon footprint",
-      "Air pollution control and dust collection systems",
-      "Retrofit solutions extending plant life",
-    ],
-    quote: "The most sustainable machine is the one that runs longer, consumes less, and produces minimal waste.",
-  },
-  {
     icon: Shield,
-    num: "02",
+    num: "01",
     title: "Responsible Manufacturing",
     subtitle: "Quality starts with integrity",
     points: [
@@ -41,6 +27,22 @@ const csrPillars = [
       "Products designed to meet industrial safety and quality standards",
     ],
     quote: "Trust is built through consistency.",
+    green: false,
+  },
+  {
+    icon: Leaf,
+    num: "02",
+    title: "Environmental Sustainability",
+    subtitle: "Engineer for longevity, not replacement",
+    points: [
+      "High-efficiency grinding and classification systems",
+      "Long-life, wear-resistant spare parts for harsh conditions",
+      "Energy-optimised equipment reducing costs and carbon footprint",
+      "Air pollution control and dust collection systems",
+      "Retrofit solutions extending plant life",
+    ],
+    quote: "The most sustainable machine is the one that runs longer, consumes less, and produces minimal waste.",
+    green: true,
   },
   {
     icon: Users,
@@ -54,12 +56,17 @@ const csrPillars = [
       "Hands-on technical guidance for efficient plant operation",
     ],
     quote: "Progress is meaningful only when it benefits industry, society, and the environment together.",
+    green: false,
   },
 ];
+
+const GREEN = "hsl(142 70% 50%)";
+const GREEN_DIM = "hsl(142 70% 35%)";
 
 const CSRCard = ({ pillar, index }: { pillar: typeof csrPillars[0]; index: number }) => {
   const [expanded, setExpanded] = useState(false);
   const Icon = pillar.icon;
+  const isGreen = pillar.green;
 
   return (
     <motion.div
@@ -68,22 +75,35 @@ const CSRCard = ({ pillar, index }: { pillar: typeof csrPillars[0]; index: numbe
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       onClick={() => setExpanded(!expanded)}
+      style={isGreen ? {
+        borderColor: expanded ? GREEN : GREEN_DIM,
+        boxShadow: expanded ? `0 0 18px 2px hsl(142 70% 40% / 0.35)` : `0 0 8px 1px hsl(142 70% 40% / 0.18)`,
+      } : {}}
       className={`cursor-pointer rounded-xl border transition-all duration-500 ${
-        expanded ? "border-primary/50 bg-card border-glow-amber" : "border-border hover:border-primary/30 bg-card/50 hover:bg-card"
+        isGreen
+          ? "bg-card/50 hover:bg-card"
+          : expanded
+            ? "border-primary/50 bg-card border-glow-amber"
+            : "border-border hover:border-primary/30 bg-card/50 hover:bg-card"
       }`}
     >
       <div className="p-6">
         <div className="flex items-start gap-4 mb-3">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-            <Icon className="w-5 h-5 text-primary" />
+          <div
+            className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border transition-colors duration-300 ${
+              isGreen ? "" : "bg-primary/10 border-primary/20"
+            }`}
+            style={isGreen ? { backgroundColor: "hsl(142 70% 50% / 0.12)", borderColor: "hsl(142 70% 50% / 0.35)" } : {}}
+          >
+            <Icon className="w-5 h-5" style={{ color: isGreen ? GREEN : "hsl(var(--primary))" }} />
           </div>
           <div className="flex-1">
-            <span className="text-primary font-display font-bold text-sm">{pillar.num}</span>
+            <span className="font-display font-bold text-sm" style={isGreen ? { color: GREEN } : { color: "hsl(var(--primary))" }}>{pillar.num}</span>
             <h4 className="font-display text-lg font-bold text-foreground">{pillar.title}</h4>
             <p className="text-sm text-muted-foreground italic">{pillar.subtitle}</p>
           </div>
           <motion.div animate={{ rotate: expanded ? 180 : 0 }}>
-            <ChevronDown className="w-4 h-4 text-primary" />
+            <ChevronDown className="w-4 h-4" style={isGreen ? { color: GREEN } : { color: "hsl(var(--primary))" }} />
           </motion.div>
         </div>
 
@@ -96,12 +116,12 @@ const CSRCard = ({ pillar, index }: { pillar: typeof csrPillars[0]; index: numbe
           <ul className="space-y-2 mb-4 pt-3 border-t border-border">
             {pillar.points.map((p) => (
               <li key={p} className="text-sm text-muted-foreground flex items-start gap-2">
-                <div className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                <div className="w-1 h-1 rounded-full mt-2 shrink-0" style={isGreen ? { backgroundColor: GREEN } : { backgroundColor: "hsl(var(--primary))" }} />
                 {p}
               </li>
             ))}
           </ul>
-          <p className="text-sm text-primary/80 italic">"{pillar.quote}"</p>
+          <p className="text-sm italic" style={isGreen ? { color: `hsl(142 70% 50% / 0.85)` } : { color: "hsl(var(--primary) / 0.8)" }}>"{pillar.quote}"</p>
         </motion.div>
       </div>
     </motion.div>
