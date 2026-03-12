@@ -3,6 +3,7 @@ import { Wrench, Settings, RefreshCw, GraduationCap, TrendingUp, ShieldCheck, Fl
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallCTA from "@/components/CallCTA";
 
 const services = [
   {
@@ -134,6 +135,7 @@ const Services = () => {
           </div>
         </section>
       </main>
+      <CallCTA />
       <Footer />
     </div>
   );

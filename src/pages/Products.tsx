@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, Cog, ArrowRight, Zap, Filter, Blend } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallCTA from "@/components/CallCTA";
 
 interface Product {
   name: string;
@@ -272,6 +273,7 @@ const Products = () => {
           </div>
         </section>
       </main>
+      <CallCTA />
       <Footer />
     </div>
   );

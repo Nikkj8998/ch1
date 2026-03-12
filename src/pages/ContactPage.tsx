@@ -4,6 +4,7 @@ import { Send, Mail, Phone, MapPin, CheckCircle, AlertCircle, Loader2 } from "lu
 import { SiWhatsapp } from "react-icons/si";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallCTA from "@/components/CallCTA";
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", industry: "", requirements: "" });
@@ -155,6 +156,7 @@ const ContactPage = () => {
           </div>
         </section>
       </main>
+      <CallCTA />
       <Footer />
     </div>
   );

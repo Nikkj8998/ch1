@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallCTA from "@/components/CallCTA";
 
 interface SparePart {
   name: string;
@@ -300,6 +301,7 @@ const Spares = () => {
           </div>
         </section>
       </main>
+      <CallCTA />
       <Footer />
     </div>
   );

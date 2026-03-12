@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Wrench, Factory, Truck, Wind, RefreshCw, Headphones, Leaf, Shield, Users, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallCTA from "@/components/CallCTA";
 
 const whatWeDo = [
   { icon: Wrench, title: "Spares & Components", desc: "Critical wear parts and OEM-grade spares" },
@@ -328,6 +329,7 @@ const About = () => {
           </div>
         </section>
       </main>
+      <CallCTA />
       <Footer />
     </div>
   );
