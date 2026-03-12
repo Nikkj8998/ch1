@@ -6,6 +6,7 @@ import HomeProducts from "@/components/HomeProducts";
 import Industries from "@/components/Industries";
 import TrustSignals from "@/components/TrustSignals";
 import Contact from "@/components/Contact";
+import CallCTA from "@/components/CallCTA";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
         <Industries />
         <TrustSignals />
         <Contact />
+        <CallCTA />
       </main>
       <Footer />
     </div>
