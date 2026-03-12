@@ -16,12 +16,15 @@ const Footer = () => {
             </div>
           </Link>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Process Solution Architects specializing in milling, mixing, and air pollution control equipment.
+            Process Solution Architects specializing in milling, mixing, and air
+            pollution control equipment.
           </p>
         </div>
 
         <div>
-          <h4 className="font-display font-bold text-foreground mb-4">Quick Links</h4>
+          <h4 className="font-display font-bold text-foreground mb-4">
+            Quick Links
+          </h4>
           <div className="space-y-2">
             {[
               { label: "Products", href: "/products" },
@@ -42,7 +45,9 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-display font-bold text-foreground mb-4">Contact</h4>
+          <h4 className="font-display font-bold text-foreground mb-4">
+            Contact
+          </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
             <p>info@carbonhive.com</p>
             <p>+91 99999 99999</p>
@@ -60,14 +65,15 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} CarbonHive. All rights reserved. &nbsp;·&nbsp; Designed by{" "}
+        © {new Date().getFullYear()} CarbonHive. All rights reserved.Designed
+        by{" "}
         <a
           href="https://www.cybaemtech.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-[hsl(142_60%_28%)] transition-colors duration-200"
         >
-          Cybaem Tech
+          CybaemTech
         </a>
       </div>
     </footer>
