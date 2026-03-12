@@ -61,7 +61,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/contact"
-              className="px-5 py-2 bg-[hsl(142_70%_50%)] text-white font-display font-semibold rounded-md hover:bg-[hsl(142_70%_45%)] transition-all duration-300 text-sm"
+              className="px-5 py-2 bg-[hsl(142_60%_22%)] text-white font-display font-semibold rounded-md border border-[hsl(142_70%_45%/0.6)] shadow-[0_0_12px_hsl(142_70%_45%/0.4)] hover:bg-[hsl(142_60%_28%)] hover:shadow-[0_0_20px_hsl(142_70%_50%/0.65)] transition-all duration-300 text-sm"
             >
               Request a Quote
             </Link>
@@ -105,7 +105,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 px-8 py-3 bg-[hsl(142_70%_50%)] text-white font-display font-bold rounded-md text-lg hover:bg-[hsl(142_70%_45%)] transition-all duration-300"
+                className="mt-4 px-8 py-3 bg-[hsl(142_60%_22%)] text-white font-display font-bold rounded-md text-lg border border-[hsl(142_70%_45%/0.6)] shadow-[0_0_14px_hsl(142_70%_45%/0.45)] hover:bg-[hsl(142_60%_28%)] hover:shadow-[0_0_22px_hsl(142_70%_50%/0.7)] transition-all duration-300"
               >
                 Request a Quote
               </Link>

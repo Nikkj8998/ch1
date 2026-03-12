@@ -146,7 +146,7 @@ const ContactPage = () => {
                   Need spare parts or urgent support? Reach us directly on WhatsApp.
                 </p>
                 <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_70%_35%)] hover:bg-[hsl(142_70%_40%)] text-foreground font-semibold text-sm transition-colors">
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_60%_22%)] border border-[hsl(142_70%_45%/0.6)] shadow-[0_0_12px_hsl(142_70%_45%/0.4)] hover:bg-[hsl(142_60%_28%)] hover:shadow-[0_0_20px_hsl(142_70%_50%/0.65)] text-white font-semibold text-sm transition-all duration-300">
                   <SiWhatsapp className="w-4 h-4" />
                   WhatsApp for Spares
                 </a>
