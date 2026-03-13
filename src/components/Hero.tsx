@@ -537,6 +537,25 @@ const Product3DShowcase = () => {
         <div className="mx-auto w-64 h-full rounded-full bg-primary/15 blur-3xl" />
       </div>
 
+      {/* Label — above the 3D picture */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`label-${idx}`}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.35 }}
+          className="mb-2 flex flex-col items-center gap-1"
+        >
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-widest border border-primary/40 text-primary bg-primary/10 font-display">
+            {tag}
+          </span>
+          <p className="text-primary font-display font-bold text-lg text-glow-amber">
+            {label}
+          </p>
+        </motion.div>
+      </AnimatePresence>
+
       {/* SVG stage */}
       <div className="relative w-full max-w-[340px] sm:max-w-md md:max-w-lg">
         <AnimatePresence mode="wait">
@@ -600,40 +619,6 @@ const Product3DShowcase = () => {
             </motion.div>
           </motion.div>
         </AnimatePresence>
-      </div>
-
-      {/* Label */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`label-${idx}`}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.35 }}
-          className="mt-2 flex flex-col items-center gap-1"
-        >
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-widest border border-primary/40 text-primary bg-primary/10 font-display">
-            {tag}
-          </span>
-          <p className="text-primary font-display font-bold text-lg text-glow-amber">
-            {label}
-          </p>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Progress dots */}
-      <div className="mt-4 flex items-center gap-1.5">
-        {SHAPES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className={`rounded-full transition-all duration-300 ${
-              i === idx
-                ? "w-5 h-1.5 bg-primary shadow-[0_0_6px_hsl(42_100%_55%/0.8)]"
-                : "w-1.5 h-1.5 bg-muted-foreground/25 hover:bg-primary/50"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );
