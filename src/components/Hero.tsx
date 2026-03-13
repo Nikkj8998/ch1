@@ -18,7 +18,7 @@ const particles = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 // ─── Isometric engine ─────────────────────────────────────────────
-const S = 13, CX = 150, CY = 210;
+const S = 19, CX = 150, CY = 218;
 const TOP   = "#C8921A";
 const FRONT = "#7A5412";
 const SIDE  = "#3D2A08";
@@ -240,7 +240,7 @@ const Product3DShowcase = () => {
       </div>
 
       {/* SVG stage */}
-      <div className="relative w-full max-w-[260px] sm:max-w-xs md:max-w-sm">
+      <div className="relative w-full max-w-[340px] sm:max-w-md md:max-w-lg">
         <AnimatePresence mode="wait">
           <motion.div
             key={idx}
@@ -254,7 +254,7 @@ const Product3DShowcase = () => {
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <svg viewBox="0 0 300 310" className="w-full h-auto">
+              <svg viewBox="0 0 300 330" className="w-full h-auto">
                 {/* Grid floor dots */}
                 {Array.from({ length: 5 }, (_, r) =>
                   Array.from({ length: 5 }, (_, c) => {
@@ -264,7 +264,7 @@ const Product3DShowcase = () => {
                   })
                 )}
                 {/* Shadow ellipse on floor */}
-                <ellipse cx="150" cy="215" rx="55" ry="14" fill="hsl(42,100%,55%)" opacity="0.08" />
+                <ellipse cx="150" cy="222" rx="72" ry="18" fill="hsl(42,100%,55%)" opacity="0.08" />
                 {/* The shape */}
                 <Component />
                 {/* Subtle scan line */}
