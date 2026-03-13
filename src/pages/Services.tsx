@@ -13,161 +13,147 @@ const heroParticles = Array.from({ length: 18 }, (_, i) => ({
   delay: Math.random() * 4,
 }));
 
-const SV_CX = 200, SV_CY = 200;
-const R_ORBIT = 128;
+// Gear A (large, CW): cx=150 cy=205 r=68  period=22s
+// Gear B (medium, CCW): cx=261 cy=141 r=44  period=14.2s — meshes with A
+// Gear C (small, CCW): cx=249 cy=262 r=30  period=9.7s  — meshes with A
+// Tooth pitch ~14.9px so all gears share the same dasharray
 
-const serviceNodes = [
-  { label: "Spares",   sub: "Spare Parts",   angle: -90,  slx: 0,   sly: -34, anchor: "middle" },
-  { label: "Maintain", sub: "Maintenance",   angle: -30,  slx: 30,  sly: -18, anchor: "start"  },
-  { label: "Repair",   sub: "Refurbish",     angle:  30,  slx: 30,  sly:  18, anchor: "start"  },
-  { label: "Train",    sub: "Training",      angle:  90,  slx: 0,   sly:  34, anchor: "middle" },
-  { label: "Upgrade",  sub: "Optimise",      angle: 150,  slx: -30, sly:  18, anchor: "end"    },
-  { label: "Warranty", sub: "Extended",      angle: -150, slx: -30, sly: -18, anchor: "end"    },
+const TOOTH_DASH = "14.9 14.9";
+const FONT = "Rajdhani,sans-serif";
+const AMBER = "hsl(42,100%,55%)";
+const AMBER_LO = "hsl(42,100%,40%)";
+const BG = "hsl(220,30%,7%)";
+
+type GearDef = { cx: number; cy: number; r: number; label: string; sub: string; period: number; ccw?: boolean };
+
+const GEARS: GearDef[] = [
+  { cx: 150, cy: 205, r: 68, label: "MAINTAIN", sub: "Service Hub",  period: 22 },
+  { cx: 261, cy: 141, r: 44, label: "REPAIR",   sub: "& Refurb",     period: 14.2, ccw: true },
+  { cx: 249, cy: 262, r: 30, label: "UPGRADE",  sub: "& Train",      period: 9.7,  ccw: true },
 ];
 
-function nodePos(angleDeg: number) {
-  const rad = (angleDeg * Math.PI) / 180;
-  return { x: SV_CX + R_ORBIT * Math.cos(rad), y: SV_CY + R_ORBIT * Math.sin(rad) };
+function Gear({ cx, cy, r, label, sub, period, ccw = false }: GearDef) {
+  const toothR = r + 8;
+  const innerR = r - 6;
+  const hubR   = r * 0.22;
+  const spokeAngles = [0, 60, 120, 180, 240, 300];
+  return (
+    <g>
+      {/* Rotating part: teeth + body + spokes */}
+      <motion.g
+        animate={{ rotate: ccw ? [0, -360] : [0, 360] }}
+        transition={{ duration: period, repeat: Infinity, ease: "linear" }}
+        style={{ transformOrigin: `${cx}px ${cy}px` }}
+      >
+        {/* Teeth ring */}
+        <circle cx={cx} cy={cy} r={toothR}
+          fill="none" stroke={AMBER} strokeWidth="14"
+          strokeDasharray={TOOTH_DASH} opacity="0.7"
+        />
+        {/* Body */}
+        <circle cx={cx} cy={cy} r={innerR}
+          fill={BG} stroke={AMBER} strokeWidth="1.4" opacity="0.92"
+        />
+        {/* Spokes */}
+        {spokeAngles.map(a => {
+          const rad = (a * Math.PI) / 180;
+          return (
+            <line key={a}
+              x1={cx + hubR * Math.cos(rad)} y1={cy + hubR * Math.sin(rad)}
+              x2={cx + innerR * 0.82 * Math.cos(rad)} y2={cy + innerR * 0.82 * Math.sin(rad)}
+              stroke={AMBER} strokeWidth="1.2" opacity="0.3"
+            />
+          );
+        })}
+        {/* Hub cap */}
+        <circle cx={cx} cy={cy} r={hubR} fill={AMBER} opacity="0.25" />
+      </motion.g>
+
+      {/* Static label (never rotates) */}
+      <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="middle"
+        fill={AMBER} fontSize={r * 0.195} fontFamily={FONT} fontWeight="700"
+        style={{ pointerEvents: "none" }}>
+        {label}
+      </text>
+      <text x={cx} y={cy + r * 0.18} textAnchor="middle" dominantBaseline="middle"
+        fill={AMBER_LO} fontSize={r * 0.13} fontFamily={FONT} fontWeight="600"
+        style={{ pointerEvents: "none" }}>
+        {sub}
+      </text>
+    </g>
+  );
 }
+
+// Mesh-point spark particles
+const MESH_PTS = [
+  { x: 209, y: 171 }, // A–B contact
+  { x: 202, y: 241 }, // A–C contact
+];
 
 const ServicesVisual = () => (
   <div className="relative w-full flex items-center justify-center">
-    <div className="absolute w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-    <svg viewBox="0 0 400 400" className="w-full max-w-md h-auto">
+    <div className="absolute w-64 h-64 rounded-full bg-primary/6 blur-3xl pointer-events-none" />
+    <svg viewBox="0 0 400 400" className="w-full max-w-[420px] h-auto">
       <defs>
-        <filter id="svc-glow" x="-80%" y="-80%" width="260%" height="260%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
+        <filter id="gear-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
           <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
+        <radialGradient id="mesh-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={AMBER} stopOpacity="0.35" />
+          <stop offset="100%" stopColor={AMBER} stopOpacity="0" />
+        </radialGradient>
       </defs>
 
-      {/* Outer slowly-rotating decorative ring */}
-      <motion.circle
-        cx={SV_CX} cy={SV_CY} r={168}
-        fill="none" stroke="hsl(42,100%,55%)" strokeWidth="0.6" opacity="0.18"
-        strokeDasharray="6 14"
-        animate={{ rotate: [0, 360] }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: `${SV_CX}px ${SV_CY}px` }}
-      />
-      {/* Mid ring counter-rotate */}
-      <motion.circle
-        cx={SV_CX} cy={SV_CY} r={148}
-        fill="none" stroke="hsl(42,100%,55%)" strokeWidth="0.4" opacity="0.1"
-        strokeDasharray="3 20"
-        animate={{ rotate: [0, -360] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: `${SV_CX}px ${SV_CY}px` }}
-      />
+      {/* Mesh-point glow patches */}
+      {MESH_PTS.map((pt, i) => (
+        <motion.circle key={i} cx={pt.x} cy={pt.y} r={18}
+          fill="url(#mesh-glow)"
+          animate={{ opacity: [0.4, 1, 0.4], scale: [0.9, 1.15, 0.9] }}
+          transition={{ duration: 1.8, delay: i * 0.9, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: `${pt.x}px ${pt.y}px` }}
+        />
+      ))}
 
-      {/* Connection spokes: center → each node */}
-      {serviceNodes.map((node, i) => {
-        const { x, y } = nodePos(node.angle);
-        return (
-          <line key={`spoke-${i}`}
-            x1={SV_CX} y1={SV_CY} x2={x} y2={y}
-            stroke="hsl(42,100%,55%)" strokeWidth="0.8" opacity="0.2"
+      {/* Spark dots at mesh points */}
+      {MESH_PTS.map((pt, pi) =>
+        [0, 1, 2].map(si => (
+          <motion.circle key={`spark-${pi}-${si}`}
+            r="2" fill={AMBER} filter="url(#gear-glow)"
+            initial={{ cx: pt.x, cy: pt.y, opacity: 0.9, scale: 1 }}
+            animate={{
+              cx: [pt.x, pt.x + (si - 1) * 12, pt.x + (si - 1) * 20],
+              cy: [pt.y, pt.y - 10 - si * 4, pt.y - 22 - si * 6],
+              opacity: [0.9, 0.5, 0],
+              scale: [1, 0.7, 0],
+            }}
+            transition={{ duration: 0.9, delay: pi * 0.6 + si * 0.3, repeat: Infinity, ease: "easeOut" }}
           />
-        );
-      })}
+        ))
+      )}
 
-      {/* Animated particle dots traveling along spokes */}
-      {serviceNodes.map((node, i) => {
-        const { x, y } = nodePos(node.angle);
-        return (
-          <motion.circle
-            key={`dot-${i}`}
-            r="3.5" fill="hsl(42,100%,65%)" opacity="0.9" filter="url(#svc-glow)"
-            initial={{ cx: SV_CX, cy: SV_CY }}
-            animate={{ cx: [SV_CX, x, SV_CX], cy: [SV_CY, y, SV_CY] }}
-            transition={{ duration: 2.4, delay: i * 0.4, repeat: Infinity, ease: "easeInOut" }}
-          />
-        );
-      })}
+      {/* The three gears */}
+      {GEARS.map(g => <Gear key={g.label} {...g} />)}
 
-      {/* Central hub */}
-      <motion.circle
-        cx={SV_CX} cy={SV_CY} r={36}
-        fill="hsl(220,30%,7%)" stroke="hsl(42,100%,55%)" strokeWidth="1.5"
-        animate={{ scale: [1, 1.04, 1], opacity: [0.9, 1, 0.9] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        style={{ transformOrigin: `${SV_CX}px ${SV_CY}px` }}
-      />
-      {/* Hub pulse ring */}
-      <motion.circle
-        cx={SV_CX} cy={SV_CY} r={36}
-        fill="none" stroke="hsl(42,100%,55%)" strokeWidth="1"
-        animate={{ scale: [1, 1.56, 1.94], opacity: [0.6, 0.2, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
-        style={{ transformOrigin: `${SV_CX}px ${SV_CY}px` }}
-      />
-      <text x={SV_CX} y={SV_CY - 4} textAnchor="middle" dominantBaseline="middle"
-        fill="hsl(42,100%,55%)" fontSize="9" fontFamily="Rajdhani,sans-serif" fontWeight="700">
-        AFTER
-      </text>
-      <text x={SV_CX} y={SV_CY + 7} textAnchor="middle" dominantBaseline="middle"
-        fill="hsl(42,100%,55%)" fontSize="9" fontFamily="Rajdhani,sans-serif" fontWeight="700">
-        MARKET
-      </text>
-
-      {/* Service nodes */}
-      {serviceNodes.map((node, i) => {
-        const { x, y } = nodePos(node.angle);
-        return (
-          <motion.g
-            key={`node-${i}`}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 + i * 0.18, duration: 0.5 }}
-          >
-            {/* Sonar pulse */}
-            <motion.circle
-              cx={x} cy={y} r={22}
-              fill="none" stroke="hsl(42,100%,55%)" strokeWidth="1"
-              animate={{ scale: [1, 1.64, 2.18], opacity: [0.5, 0.15, 0] }}
-              transition={{ duration: 2.8, delay: i * 0.7, repeat: Infinity, ease: "easeOut" }}
-              style={{ transformOrigin: `${x}px ${y}px` }}
-            />
-            {/* Node body */}
-            <motion.circle
-              cx={x} cy={y} r={22}
-              fill="hsl(220,30%,7%)" stroke="hsl(42,100%,55%)" strokeWidth="1.3"
-              animate={{ scale: [1, 1.068, 1] }}
-              transition={{ duration: 3, delay: i * 0.5, repeat: Infinity, ease: "easeInOut" }}
-              style={{ transformOrigin: `${x}px ${y}px` }}
-            />
-            {/* First letter glyph */}
-            <text x={x} y={y - 3} textAnchor="middle" dominantBaseline="middle"
-              fill="hsl(42,100%,60%)" fontSize="13" fontFamily="Rajdhani,sans-serif" fontWeight="700">
-              {node.label[0]}
-            </text>
-            {/* Rest of label */}
-            <text x={x} y={y + 8} textAnchor="middle" dominantBaseline="middle"
-              fill="hsl(42,100%,45%)" fontSize="7" fontFamily="Rajdhani,sans-serif" fontWeight="600">
-              {node.label.slice(1)}
-            </text>
-            {/* Sub-label outside node */}
-            <text
-              x={x + node.slx} y={y + node.sly}
-              textAnchor={node.anchor as "middle" | "start" | "end"}
-              fill="hsl(42,100%,55%)" fontSize="7.5" fontFamily="Rajdhani,sans-serif" fontWeight="600" opacity="0.7"
-            >
-              {node.sub}
-            </text>
-          </motion.g>
-        );
-      })}
-
-      {/* Orbiting dot on outer ring */}
-      <motion.circle
-        r="4" cx={SV_CX + 168} cy={SV_CY}
-        fill="hsl(42,100%,65%)" filter="url(#svc-glow)"
-        animate={{
-          cx: [SV_CX + 168, SV_CX, SV_CX - 168, SV_CX, SV_CX + 168],
-          cy: [SV_CY, SV_CY + 168, SV_CY, SV_CY - 168, SV_CY],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
+      {/* Corner service badges */}
+      {[
+        { x: 340, y: 80,  text: "Spare Parts" },
+        { x: 340, y: 330, text: "Warranty"    },
+        { x: 48,  y: 80,  text: "Containment" },
+        { x: 48,  y: 330, text: "Training"    },
+      ].map(({ x, y, text }) => (
+        <motion.g key={text}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+        >
+          <rect x={x - 32} y={y - 9} width="64" height="18" rx="4"
+            fill={BG} stroke={AMBER} strokeWidth="0.7" opacity="0.5" />
+          <text x={x} y={y + 1} textAnchor="middle" dominantBaseline="middle"
+            fill={AMBER} fontSize="7.5" fontFamily={FONT} fontWeight="600" opacity="0.75">
+            {text}
+          </text>
+        </motion.g>
+      ))}
     </svg>
   </div>
 );
