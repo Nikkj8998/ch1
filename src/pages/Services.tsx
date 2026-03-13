@@ -471,11 +471,11 @@ const Services = () => {
                     className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col overflow-hidden"
                   >
                     {/* Image panel */}
-                    <div className="relative h-44 bg-background/60 flex items-center justify-center overflow-hidden">
+                    <div className="relative h-44 overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       {/* Subtle amber bottom fade */}
                       <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
@@ -517,11 +517,11 @@ const Services = () => {
                     className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col overflow-hidden"
                   >
                     {/* Image panel */}
-                    <div className="relative h-44 bg-background/60 flex items-center justify-center overflow-hidden">
+                    <div className="relative h-44 overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       {/* Subtle bottom fade */}
                       <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
