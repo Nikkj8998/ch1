@@ -214,20 +214,20 @@ const About = () => {
       <main>
         {/* Hero */}
         <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-hero relative overflow-hidden">
-          {/* Background image — object-contain so the full equipment is always visible */}
+          {/* Background image — object-contain so the full figure is always visible */}
           <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none">
             <img
-              src="/images/products/acm.png"
+              src="/images/about-hero.png"
               alt=""
-              className="h-full w-auto max-w-[55%] object-contain opacity-20 select-none"
+              className="h-full w-full object-contain object-right opacity-30 select-none"
               draggable={false}
             />
           </div>
-          {/* Gradient overlay to keep text readable and match site dark theme */}
+          {/* Gradient overlay — keeps text readable, fades left to dark matching site theme */}
           <div className="absolute inset-0 z-[1] pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 30%, hsl(207 100% 30% / 0.12) 0%, transparent 60%), linear-gradient(to right, hsl(220 30% 5% / 0.95) 35%, hsl(220 30% 5% / 0.5) 70%, transparent 100%)",
+                "radial-gradient(ellipse at 30% 50%, hsl(207 100% 30% / 0.10) 0%, transparent 55%), linear-gradient(to right, hsl(220 30% 5% / 0.98) 25%, hsl(220 30% 5% / 0.75) 55%, hsl(220 30% 5% / 0.25) 100%)",
             }}
           />
           <HeroVisualBg />
