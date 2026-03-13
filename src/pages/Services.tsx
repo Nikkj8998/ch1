@@ -363,8 +363,8 @@ const Services = () => {
           {/* Content fills remaining height below navbar */}
           <div className="relative z-10 flex-1 flex">
             <div className="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch py-8">
-              {/* Left: content — badge+heading+para at top, stat cards at bottom */}
-              <div className="flex flex-col justify-between">
+              {/* Left: content — text and stat cards centred together */}
+              <div className="flex flex-col justify-center gap-10">
                 <div>
                   <motion.div
                     initial={{ opacity: 0, y: 18 }}
