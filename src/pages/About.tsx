@@ -219,15 +219,15 @@ const About = () => {
             <img
               src="/images/about-hero.png"
               alt=""
-              className="h-full w-full object-contain object-right opacity-30 select-none"
+              className="h-full w-full object-contain object-right opacity-70 select-none"
               draggable={false}
             />
           </div>
-          {/* Gradient overlay — keeps text readable, fades left to dark matching site theme */}
+          {/* Gradient — dark on left for text readability, fully transparent on right so engineers show clearly */}
           <div className="absolute inset-0 z-[1] pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at 30% 50%, hsl(207 100% 30% / 0.10) 0%, transparent 55%), linear-gradient(to right, hsl(220 30% 5% / 0.98) 25%, hsl(220 30% 5% / 0.75) 55%, hsl(220 30% 5% / 0.25) 100%)",
+                "linear-gradient(to right, hsl(220 30% 5% / 1) 0%, hsl(220 30% 5% / 0.95) 20%, hsl(220 30% 5% / 0.6) 45%, hsl(220 30% 5% / 0.15) 65%, transparent 80%)",
             }}
           />
           <HeroVisualBg />
