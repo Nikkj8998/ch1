@@ -240,7 +240,7 @@ const Product3DShowcase = () => {
       </div>
 
       {/* SVG stage */}
-      <div className="relative w-full max-w-sm">
+      <div className="relative w-full max-w-[260px] sm:max-w-xs md:max-w-sm">
         <AnimatePresence mode="wait">
           <motion.div
             key={idx}
@@ -329,7 +329,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-32 pb-20 lg:pt-40">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center pt-28 pb-16 md:pt-36 lg:pt-40">
         {/* Left: Content */}
         <div>
           <motion.div
@@ -385,10 +385,10 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right: 3D Product Showcase */}
+        {/* Right: 3D Product Showcase — visible on all screen sizes */}
         <motion.div
-          className="hidden lg:flex items-center justify-center"
-          style={{ minHeight: "420px" }}
+          className="flex items-center justify-center w-full"
+          style={{ minHeight: "clamp(260px, 45vw, 440px)" }}
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
