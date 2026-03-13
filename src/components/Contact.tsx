@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Loader2, Phone } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
 const Contact = () => {
@@ -128,6 +128,18 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_60%_22%)] border border-[hsl(142_70%_45%/0.6)] shadow-[0_0_12px_hsl(142_70%_45%/0.4)] hover:bg-[hsl(142_60%_28%)] hover:shadow-[0_0_20px_hsl(142_70%_50%/0.65)] text-white font-semibold text-sm transition-all duration-300">
                 <SiWhatsapp className="w-4 h-4" />
                 WhatsApp for Spares
+              </a>
+            </div>
+
+            <div className="p-6 rounded-xl border border-border bg-card/50">
+              <h3 className="font-display text-lg font-bold text-foreground mb-2">Call Us Now</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Speak directly with our engineering team for expert guidance.
+              </p>
+              <a href="tel:+919999999999"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(142_60%_22%)] border border-[hsl(142_70%_45%/0.6)] shadow-[0_0_12px_hsl(142_70%_45%/0.4)] hover:bg-[hsl(142_60%_28%)] hover:shadow-[0_0_20px_hsl(142_70%_50%/0.65)] text-white font-semibold text-sm transition-all duration-300">
+                <Phone className="w-4 h-4" />
+                Call Us Now
               </a>
             </div>
           </motion.div>
