@@ -299,9 +299,10 @@ const About = () => {
         {/* Vision & Mission */}
         <section className="py-16 px-6 bg-gradient-dark">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <motion.div className="p-8 rounded-xl border border-border bg-card/50"
+            <motion.div className="p-8 rounded-xl bg-card/50"
+              style={{ borderWidth: "1px", borderStyle: "solid", borderColor: GREEN, boxShadow: `0 0 18px 2px hsl(142 70% 40% / 0.2)` }}
               initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h3 className="font-display text-2xl font-bold text-primary mb-4">Our Vision</h3>
+              <h3 className="font-display text-2xl font-bold mb-4" style={{ color: GREEN }}>Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
                 To be a globally trusted engineering brand, delivering sustainable, high-performance grinding and material processing solutions that create long-term value for industry, people, and the environment.
               </p>
