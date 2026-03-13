@@ -204,7 +204,7 @@ const Services = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative min-h-[62vh] flex items-start bg-gradient-hero overflow-hidden pt-[72px]">
+        <section className="relative min-h-screen flex items-start bg-gradient-hero overflow-hidden pt-[72px]">
           {/* Floating particles */}
           <div className="absolute inset-0 pointer-events-none">
             {heroParticles.map((p) => (
@@ -226,7 +226,7 @@ const Services = () => {
             }}
           />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-12">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-6">
             {/* Left: content */}
             <div>
               <motion.div
