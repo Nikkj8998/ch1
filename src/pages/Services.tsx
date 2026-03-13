@@ -468,23 +468,38 @@ const Services = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="group p-6 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col"
+                    className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col overflow-hidden"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
-                      <Icon className="w-6 h-6 text-primary" />
+                    {/* Image panel */}
+                    <div className="relative h-44 bg-background/60 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Subtle amber bottom fade */}
+                      <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
+                        style={{ background: "linear-gradient(to top, hsl(220 25% 8% / 0.85), transparent)" }} />
+                      {/* Icon badge */}
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-md bg-primary/10 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                      {service.description}
-                    </p>
-                    <button
-                      onClick={() => navigate("/contact")}
-                      className="mt-4 text-primary text-sm font-semibold hover:underline self-start"
-                    >
-                      Discover More →
-                    </button>
+                    {/* Content */}
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                        {service.description}
+                      </p>
+                      <button
+                        onClick={() => navigate("/contact")}
+                        className="mt-4 text-primary text-sm font-semibold hover:underline self-start"
+                      >
+                        Discover More →
+                      </button>
+                    </div>
                   </motion.div>
                 );
               })}
@@ -499,23 +514,38 @@ const Services = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: (i + 4) * 0.1 }}
-                    className="group p-6 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col"
+                    className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500 flex flex-col overflow-hidden"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
-                      <Icon className="w-6 h-6 text-primary" />
+                    {/* Image panel */}
+                    <div className="relative h-44 bg-background/60 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {/* Subtle bottom fade */}
+                      <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
+                        style={{ background: "linear-gradient(to top, hsl(220 25% 8% / 0.85), transparent)" }} />
+                      {/* Icon badge */}
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-md bg-primary/10 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                      {service.description}
-                    </p>
-                    <button
-                      onClick={() => navigate("/contact")}
-                      className="mt-4 text-primary text-sm font-semibold hover:underline self-start"
-                    >
-                      Discover More →
-                    </button>
+                    {/* Content */}
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                        {service.description}
+                      </p>
+                      <button
+                        onClick={() => navigate("/contact")}
+                        className="mt-4 text-primary text-sm font-semibold hover:underline self-start"
+                      >
+                        Discover More →
+                      </button>
+                    </div>
                   </motion.div>
                 );
               })}
