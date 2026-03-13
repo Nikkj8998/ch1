@@ -275,42 +275,49 @@ const ServicesVisual = () => (
 const services = [
   {
     icon: Wrench,
+    image: "/services/spare-parts.png",
     title: "Spare Parts",
     description:
       "We supply genuine, high-quality spare parts to keep your equipment running at peak performance.",
   },
   {
     icon: Settings,
+    image: "/services/maintenance.png",
     title: "Maintenance Packages",
     description:
       "Our tailored maintenance packages help maximise uptime and extend the life of your equipment.",
   },
   {
     icon: RefreshCw,
+    image: "/services/refurbishment.png",
     title: "Refurbishments & Repairs",
     description:
       "We offer expert refurbishment and repair services to restore equipment performance and reliability.",
   },
   {
     icon: GraduationCap,
+    image: "/services/training.png",
     title: "Training Packages",
     description:
       "We provide customised training packages to equip your teams with the skills to operate and maintain systems effectively.",
   },
   {
     icon: TrendingUp,
+    image: "/services/optimisation.png",
     title: "Optimisation Upgrades",
     description:
       "Our optimisation upgrades improve equipment efficiency, productivity and process performance.",
   },
   {
     icon: ShieldCheck,
+    image: "/services/warranty.png",
     title: "Extended Warranties",
     description:
       "We offer extended warranties for added peace of mind and long-term equipment protection.",
   },
   {
     icon: FlaskConical,
+    image: "/services/containment.png",
     title: "Containment Testing",
     description:
       "We carry out specialist containment testing to ensure safety, compliance, and operator protection.",
