@@ -322,14 +322,14 @@ const Hero = () => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-start bg-gradient-hero overflow-hidden pt-[72px]">
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((p) => (
           <Particle key={p.id} x={p.x} y={p.y} delay={p.delay} />
         ))}
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center pt-28 pb-16 md:pt-36 lg:pt-40">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start py-10 md:py-12">
         {/* Left: Content */}
         <div>
           <motion.div
