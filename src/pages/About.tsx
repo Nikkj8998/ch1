@@ -213,7 +213,23 @@ const About = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-28 pb-16 px-6 bg-gradient-hero relative overflow-hidden">
+        <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-hero relative overflow-hidden">
+          {/* Background image — object-contain so the full equipment is always visible */}
+          <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none">
+            <img
+              src="/images/products/acm.png"
+              alt=""
+              className="h-full w-auto max-w-[55%] object-contain opacity-20 select-none"
+              draggable={false}
+            />
+          </div>
+          {/* Gradient overlay to keep text readable and match site dark theme */}
+          <div className="absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 30%, hsl(207 100% 30% / 0.12) 0%, transparent 60%), linear-gradient(to right, hsl(220 30% 5% / 0.95) 35%, hsl(220 30% 5% / 0.5) 70%, transparent 100%)",
+            }}
+          />
           <HeroVisualBg />
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.span className="text-primary text-sm font-semibold uppercase tracking-widest"
