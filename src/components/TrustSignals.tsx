@@ -79,7 +79,33 @@ const TrustSignals = () => (
       </div>
 
       <motion.div
-        className="mt-16 grid md:grid-cols-2 gap-8"
+        className="mt-16 p-8 rounded-xl border border-primary/20 bg-card/50"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4">
+          {[
+            "Over 10 Years of Combined Expertise in Grinding Technology",
+            "End-to-End Solutions – From Concept Design to Commissioning",
+            "Expertise in Greenfield and Turnkey Grinding Projects",
+            "Plant Modernization and Capacity Enhancement Solutions",
+            "Customized Solutions for Specialized Grinding Applications",
+            "Energy-Efficient Grinding System Design",
+            "Comprehensive Technical Support and After-Sales Service",
+          ].map((point, i) => (
+            <li key={i} className="flex items-start gap-3 group">
+              <span className="mt-1.5 w-2 h-2 rounded-sm bg-primary shrink-0 rotate-45 group-hover:scale-125 transition-transform duration-200" />
+              <span className="text-muted-foreground text-sm leading-relaxed font-medium group-hover:text-foreground transition-colors duration-200">
+                {point}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
+      <motion.div
+        className="mt-8 grid md:grid-cols-2 gap-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
