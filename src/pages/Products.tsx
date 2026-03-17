@@ -390,7 +390,19 @@ const Products = () => {
       <Navbar />
       <main>
         {/* Hero Banner */}
-        <section className="relative min-h-[62vh] flex items-start bg-gradient-hero overflow-hidden pt-[72px]">
+        <section className="relative min-h-[62vh] flex items-start overflow-hidden pt-[72px]">
+          {/* Background video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src="/hero-bg-vedio.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-black/70 z-[1]" />
           {/* Floating particles */}
           <div className="absolute inset-0 pointer-events-none">
             {heroParticles.map((p) => (
