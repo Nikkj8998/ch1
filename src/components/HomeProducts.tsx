@@ -45,14 +45,6 @@ const HomeProducts = () => (
             transition={{ delay: Math.min(i * 0.05, 0.4) }}
             className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300 overflow-hidden"
           >
-            <div className="w-full h-40 overflow-hidden bg-muted/10 border-b border-border">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-            </div>
             <div className="p-4">
               <h3 className="font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
                 {product.name}
