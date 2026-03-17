@@ -1,12 +1,23 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Shield, Clock, Award, Users } from "lucide-react";
+import { FaMedal, FaProjectDiagram, FaIndustry, FaTools, FaCogs, FaBolt, FaHeadset } from "react-icons/fa";
 
 const stats = [
   { icon: Clock, value: 25, suffix: "+", label: "Years Experience" },
   { icon: Award, value: 500, suffix: "+", label: "Installations" },
   { icon: Shield, value: 3, suffix: "", label: "ISO Certifications" },
   { icon: Users, value: 200, suffix: "+", label: "Active Clients" },
+];
+
+const capabilities = [
+  { icon: FaMedal,          text: "Over 10 Years of Combined Expertise in Grinding Technology" },
+  { icon: FaProjectDiagram, text: "End-to-End Solutions – From Concept Design to Commissioning" },
+  { icon: FaIndustry,       text: "Expertise in Greenfield and Turnkey Grinding Projects" },
+  { icon: FaTools,          text: "Plant Modernization and Capacity Enhancement Solutions" },
+  { icon: FaCogs,           text: "Customized Solutions for Specialized Grinding Applications" },
+  { icon: FaBolt,           text: "Energy-Efficient Grinding System Design" },
+  { icon: FaHeadset,        text: "Comprehensive Technical Support and After-Sales Service" },
 ];
 
 const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
@@ -56,6 +67,33 @@ const TrustSignals = () => (
         </p>
       </motion.div>
 
+      <motion.div
+        className="mb-14 p-8 rounded-xl border border-primary/20 bg-card/50 backdrop-blur-sm"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-5">
+          {capabilities.map(({ icon: Icon, text }, i) => (
+            <motion.li
+              key={i}
+              className="flex items-start gap-4 group"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+            >
+              <span className="mt-0.5 w-8 h-8 rounded-lg bg-primary/10 border border-primary/25 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
+                <Icon className="w-3.5 h-3.5 text-primary" />
+              </span>
+              <span className="text-muted-foreground text-sm leading-relaxed font-medium pt-1.5 group-hover:text-foreground transition-colors duration-300">
+                {text}
+              </span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat, i) => {
           const Icon = stat.icon;
@@ -77,32 +115,6 @@ const TrustSignals = () => (
           );
         })}
       </div>
-
-      <motion.div
-        className="mt-16 p-8 rounded-xl border border-primary/20 bg-card/50"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4">
-          {[
-            "Over 10 Years of Combined Expertise in Grinding Technology",
-            "End-to-End Solutions – From Concept Design to Commissioning",
-            "Expertise in Greenfield and Turnkey Grinding Projects",
-            "Plant Modernization and Capacity Enhancement Solutions",
-            "Customized Solutions for Specialized Grinding Applications",
-            "Energy-Efficient Grinding System Design",
-            "Comprehensive Technical Support and After-Sales Service",
-          ].map((point, i) => (
-            <li key={i} className="flex items-start gap-3 group">
-              <span className="mt-1.5 w-2 h-2 rounded-sm bg-primary shrink-0 rotate-45 group-hover:scale-125 transition-transform duration-200" />
-              <span className="text-muted-foreground text-sm leading-relaxed font-medium group-hover:text-foreground transition-colors duration-200">
-                {point}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
 
       <motion.div
         className="mt-8 grid md:grid-cols-2 gap-8"
