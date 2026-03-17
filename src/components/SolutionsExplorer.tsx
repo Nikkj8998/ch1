@@ -2,32 +2,56 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Cog, Wind, Package } from "lucide-react";
+import { Package, Factory, Truck, Wind, Wrench, Cpu } from "lucide-react";
 
 const solutions = [
   {
-    icon: Cog,
-    title: "Size Reduction",
-    subtitle: "Milling & Grinding",
-    description: "High-efficiency milling systems for ultra-fine grinding. Pin mills, hammer mills, air classifying mills, and jet mills for precise particle size control.",
-    specs: ["Particle size: 1–500 microns", "Capacity: 10 kg/hr to 10 TPH", "GMP & ATEX compliant options"],
+    icon: Package,
+    title: "Spares & Components",
+    subtitle: "Critical Wear Parts",
+    description: "OEM-grade spare parts and critical wear components engineered for longevity and peak performance. Minimise downtime with certified replacements for all major grinding and processing equipment.",
+    specs: ["OEM & cross-reference compatibility", "Fast-track delivery & stocking", "Full traceability & certification"],
     green: false,
   },
   {
-    icon: Package,
-    title: "Powder Handling",
-    subtitle: "Mixing & Conveying",
-    description: "Complete powder handling solutions from mixing to conveying. Ribbon blenders, conical mixers, pneumatic conveying systems, and sifters for seamless material flow.",
-    specs: ["Batch: 50L to 10,000L", "Continuous processing", "Dust-free operation"],
+    icon: Factory,
+    title: "Turnkey Systems",
+    subtitle: "Complete Processing Plants",
+    description: "End-to-end delivery of complete grinding and powder processing plants — from initial concept and engineering through to fabrication, installation, and commissioning.",
+    specs: ["Greenfield & brownfield projects", "Single-point project responsibility", "Process guarantees & performance testing"],
     green: true,
   },
   {
-    icon: Wind,
-    title: "Emission Control",
-    subtitle: "Air Pollution Systems",
-    description: "Advanced air pollution control equipment including bag filters, cyclone separators, scrubbers, and dust collection systems to meet environmental compliance.",
-    specs: ["99.9% collection efficiency", "Custom CFD design", "Turnkey installations"],
+    icon: Truck,
+    title: "Material Handling",
+    subtitle: "Bulk Material Solutions",
+    description: "Robust bulk material handling systems designed for reliable, dust-free transfer of powders and granules. Bucket elevators, screw conveyors, pneumatic systems, and silo solutions.",
+    specs: ["Capacities from 1 TPH to 100 TPH", "Dust-free enclosed designs", "Custom layout and flow engineering"],
     green: false,
+  },
+  {
+    icon: Wind,
+    title: "Environmental Systems",
+    subtitle: "Air Pollution Control",
+    description: "Comprehensive dust management and air pollution control systems including bag filters, cyclone separators, wet scrubbers, and ESP units for full regulatory compliance.",
+    specs: ["99.9% dust collection efficiency", "Custom CFD-designed systems", "Compliant with environmental norms"],
+    green: true,
+  },
+  {
+    icon: Wrench,
+    title: "Upgrades & Retrofits",
+    subtitle: "Plant Revamp Solutions",
+    description: "Extend the life and capacity of your existing plant with targeted retrofit, revamp, and upgrade solutions. We optimise legacy systems to deliver improved efficiency and throughput.",
+    specs: ["Capacity enhancement programmes", "Legacy equipment integration", "Minimal production interruption"],
+    green: false,
+  },
+  {
+    icon: Cpu,
+    title: "Engineering Support",
+    subtitle: "Technical Consultation",
+    description: "Specialist technical consultation and process optimisation services. From feasibility studies and process audits to on-site troubleshooting and performance improvement programmes.",
+    specs: ["Process audits & feasibility studies", "On-site and remote support", "Long-term AMC programmes"],
+    green: true,
   },
 ];
 
