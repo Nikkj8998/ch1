@@ -1,26 +1,41 @@
 import { motion } from "framer-motion";
-import { Pill, Wheat, Beaker, Mountain } from "lucide-react";
+import { Flame, UtensilsCrossed, FlaskConical, Pill, Mountain, Package, Leaf } from "lucide-react";
 
 const industries = [
   {
+    icon: Flame,
+    name: "Spice Processing",
+    useCases: "Chopper mills and pulverisers for chillies, turmeric, coriander, cumin, ginger, and mixed spices — one of our core sectors.",
+  },
+  {
+    icon: UtensilsCrossed,
+    name: "Food Manufacturing",
+    useCases: "Size reduction and processing for sugar, cocoa, coffee, gram flour, starch, and a wide range of agro-processing applications.",
+  },
+  {
+    icon: FlaskConical,
+    name: "Chemicals",
+    useCases: "Robust systems for pigments, carbon black, and industrial chemical powders with ATEX-rated milling and dust collection.",
+  },
+  {
     icon: Pill,
     name: "Pharmaceuticals",
-    useCases: "API micronization, excipient processing, GMP-compliant milling and containment systems.",
-  },
-  {
-    icon: Wheat,
-    name: "Food & Spices",
-    useCases: "Cryogenic spice grinding, sugar milling, powder blending with hygiene-grade finishes.",
-  },
-  {
-    icon: Beaker,
-    name: "Chemicals",
-    useCases: "Pigment grinding, agrochemical processing, ATEX-rated milling and dust collection.",
+    useCases: "High-hygiene equipment built to pharmaceutical standards for fine powder processing, capsule filling, and API milling.",
   },
   {
     icon: Mountain,
     name: "Minerals",
-    useCases: "calcium carbonate, talc, and mineral ore processing with high throughput and wear-resistant designs.",
+    useCases: "Size reduction and handling for calcium carbonate, talc, silica, and mineral ores with high-throughput, wear-resistant designs.",
+  },
+  {
+    icon: Package,
+    name: "Bulk Powder Handling",
+    useCases: "Efficient and contained movement of bulk powders and granules across industries — from transfer to storage and dispatch.",
+  },
+  {
+    icon: Leaf,
+    name: "Agro-Processing",
+    useCases: "Thermal processing, roasting, and size reduction for agricultural products including grains, seeds, and agro-commodities.",
   },
 ];
 
