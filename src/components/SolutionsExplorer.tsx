@@ -2,55 +2,55 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Package, Factory, Truck, Wind, Wrench, Cpu } from "lucide-react";
+import { Wind, Layers, Settings2, Shuffle, Zap, Wrench } from "lucide-react";
 
 const solutions = [
   {
-    icon: Package,
-    title: "Spares & Components",
-    subtitle: "Critical Wear Parts",
-    description: "OEM-grade spare parts and critical wear components engineered for longevity and peak performance. Minimise downtime with certified replacements for all major grinding and processing equipment.",
-    specs: ["OEM & cross-reference compatibility", "Fast-track delivery & stocking", "Full traceability & certification"],
-    green: false,
-  },
-  {
-    icon: Factory,
-    title: "Turnkey Systems",
-    subtitle: "Complete Processing Plants",
-    description: "End-to-end delivery of complete grinding and powder processing plants — from initial concept and engineering through to fabrication, installation, and commissioning.",
-    specs: ["Greenfield & brownfield projects", "Single-point project responsibility", "Process guarantees & performance testing"],
-    green: true,
-  },
-  {
-    icon: Truck,
-    title: "Material Handling",
-    subtitle: "Bulk Material Solutions",
-    description: "Robust bulk material handling systems designed for reliable, dust-free transfer of powders and granules. Bucket elevators, screw conveyors, pneumatic systems, and silo solutions.",
-    specs: ["Capacities from 1 TPH to 100 TPH", "Dust-free enclosed designs", "Custom layout and flow engineering"],
-    green: false,
-  },
-  {
     icon: Wind,
-    title: "Environmental Systems",
-    subtitle: "Air Pollution Control",
-    description: "Comprehensive dust management and air pollution control systems including bag filters, cyclone separators, wet scrubbers, and ESP units for full regulatory compliance.",
-    specs: ["99.9% dust collection efficiency", "Custom CFD-designed systems", "Compliant with environmental norms"],
+    title: "Air Pollution",
+    subtitle: "Emission Control Systems",
+    description: "Comprehensive air pollution control solutions including pulse-jet bag filters, cyclone separators, wet scrubbers, and ESP units engineered for maximum dust collection efficiency and full regulatory compliance.",
+    specs: ["99.9% dust collection efficiency", "Pulse-jet & reverse-air bag filters", "Compliant with environmental norms"],
+    green: false,
+  },
+  {
+    icon: Layers,
+    title: "Bulk Solid Solutions",
+    subtitle: "Material Handling Systems",
+    description: "End-to-end bulk solid handling systems designed for reliable, dust-free transfer of powders and granules — belt & screw conveyors, bucket elevators, silos, and complete storage solutions.",
+    specs: ["Capacities from 1 TPH to 500 TPH", "Dust-free enclosed designs", "Custom flow & layout engineering"],
     green: true,
+  },
+  {
+    icon: Settings2,
+    title: "Grinding Solutions",
+    subtitle: "Size Reduction Technology",
+    description: "Advanced milling and grinding systems for fine and ultra-fine particle size reduction — ACM mills, pulverisers, hammer mills, and integrated air classifiers engineered for precision and throughput.",
+    specs: ["d50 from 5 µm to 500 µm", "Air classifying & pin mills", "Process guarantees & lab trials"],
+    green: false,
+  },
+  {
+    icon: Shuffle,
+    title: "Mixing Solutions",
+    subtitle: "Blending & Homogenisation",
+    description: "High-performance mixing and blending equipment for powders, granules, and pastes. Ribbon blenders, paddle mixers, plough mixers, and continuous systems tailored to your product specifications.",
+    specs: ["Batch & continuous processing", "CV < 5% blend uniformity", "Jacketed & pressure-vessel designs"],
+    green: true,
+  },
+  {
+    icon: Zap,
+    title: "Pneumatic Solutions",
+    subtitle: "Pneumatic Conveying Systems",
+    description: "Dilute and dense-phase pneumatic conveying systems for gentle, efficient transport of bulk solids across any distance. Fully engineered from source to destination with complete dust containment.",
+    specs: ["Dilute & dense-phase systems", "Conveying distances up to 1000 m", "Pressure & vacuum designs"],
+    green: false,
   },
   {
     icon: Wrench,
-    title: "Upgrades & Retrofits",
-    subtitle: "Plant Revamp Solutions",
-    description: "Extend the life and capacity of your existing plant with targeted retrofit, revamp, and upgrade solutions. We optimise legacy systems to deliver improved efficiency and throughput.",
-    specs: ["Capacity enhancement programmes", "Legacy equipment integration", "Minimal production interruption"],
-    green: false,
-  },
-  {
-    icon: Cpu,
-    title: "Engineering Support",
-    subtitle: "Technical Consultation",
-    description: "Specialist technical consultation and process optimisation services. From feasibility studies and process audits to on-site troubleshooting and performance improvement programmes.",
-    specs: ["Process audits & feasibility studies", "On-site and remote support", "Long-term AMC programmes"],
+    title: "Services",
+    subtitle: "AMC, Spares & Support",
+    description: "Comprehensive after-sales support including annual maintenance contracts, OEM spare parts supply, plant audits, retrofits, and on-site troubleshooting to maximise plant uptime and equipment life.",
+    specs: ["Annual maintenance contracts (AMC)", "OEM & cross-reference spares", "On-site commissioning & support"],
     green: true,
   },
 ];
