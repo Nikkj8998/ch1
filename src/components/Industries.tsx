@@ -85,19 +85,33 @@ const Industries = () => (
           return (
             <motion.div
               key={ind.name}
-              className="group relative p-6 rounded-xl border border-border bg-card/40 hover:border-green-500/50 hover:bg-card transition-all duration-400 cursor-default"
+              className={`group relative p-6 rounded-xl border border-border bg-card/40 transition-all duration-400 cursor-default ${
+                i % 2 === 0
+                  ? "hover:border-primary/50"
+                  : "hover:border-green-500/50"
+              } hover:bg-card`}
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: i * 0.07, ease: "easeOut" }}
               whileHover={{ y: -4, transition: { duration: 0.22 } }}
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-green-500/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className={`absolute inset-0 rounded-xl bg-gradient-to-b ${i % 2 === 0 ? "from-primary/8" : "from-green-500/8"} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400`} />
               <div className="relative">
-                <div className="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-4 group-hover:bg-green-500/20 group-hover:border-green-500/50 transition-all duration-300">
-                  <Icon className="w-6 h-6 text-green-400 group-hover:text-green-300 transition-colors duration-300" />
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${
+                  i % 2 === 0
+                    ? "bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/50"
+                    : "bg-green-500/10 border border-green-500/20 group-hover:bg-green-500/20 group-hover:border-green-500/50"
+                }`}>
+                  <Icon className={`w-6 h-6 transition-colors duration-300 ${
+                    i % 2 === 0
+                      ? "text-primary group-hover:text-amber-300"
+                      : "text-green-400 group-hover:text-green-300"
+                  }`} />
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-green-100 transition-colors duration-300">{ind.name}</h3>
+                <h3 className={`font-display text-xl font-bold text-foreground mb-2 transition-colors duration-300 ${
+                  i % 2 === 0 ? "group-hover:text-amber-100" : "group-hover:text-green-100"
+                }`}>{ind.name}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400 max-h-0 group-hover:max-h-40 overflow-hidden">
                   {ind.useCases}
                 </p>
