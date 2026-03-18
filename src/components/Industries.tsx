@@ -1,41 +1,66 @@
 import { motion } from "framer-motion";
-import { Flame, UtensilsCrossed, FlaskConical, Pill, Mountain, Package, Leaf } from "lucide-react";
+import { Zap, Building2, Mountain, Microscope, Flame, UtensilsCrossed, FlaskConical, Layers, Hammer, Droplets, Sprout, Wheat } from "lucide-react";
 
 const industries = [
   {
-    icon: Flame,
-    name: "Spice Processing",
-    useCases: "Chopper mills and pulverisers for chillies, turmeric, coriander, cumin, ginger, and mixed spices — one of our core sectors.",
+    icon: Zap,
+    name: "Energy & Utilities",
+    useCases: "Milling and bulk handling solutions for fly ash, coal, biomass, and solid fuels used across power generation and utility plants.",
   },
   {
-    icon: UtensilsCrossed,
-    name: "Food Manufacturing",
-    useCases: "Size reduction and processing for sugar, cocoa, coffee, gram flour, starch, and a wide range of agro-processing applications.",
-  },
-  {
-    icon: FlaskConical,
-    name: "Chemicals",
-    useCases: "Robust systems for pigments, carbon black, and industrial chemical powders with ATEX-rated milling and dust collection.",
-  },
-  {
-    icon: Pill,
-    name: "Pharmaceuticals",
-    useCases: "High-hygiene equipment built to pharmaceutical standards for fine powder processing, capsule filling, and API milling.",
+    icon: Building2,
+    name: "Construction Materials",
+    useCases: "High-throughput grinding and classification systems for cement, gypsum, lime, and construction aggregates.",
   },
   {
     icon: Mountain,
-    name: "Minerals",
-    useCases: "Size reduction and handling for calcium carbonate, talc, silica, and mineral ores with high-throughput, wear-resistant designs.",
+    name: "Mining & Mineral Processing",
+    useCases: "Wear-resistant size reduction and conveying for calcium carbonate, talc, silica, feldspar, and a wide range of mineral ores.",
   },
   {
-    icon: Package,
-    name: "Bulk Powder Handling",
-    useCases: "Efficient and contained movement of bulk powders and granules across industries — from transfer to storage and dispatch.",
+    icon: Microscope,
+    name: "Life Sciences & Pharma",
+    useCases: "cGMP-compliant milling and contained powder handling for APIs, excipients, and nutraceutical ingredients.",
   },
   {
-    icon: Leaf,
-    name: "Agro-Processing",
-    useCases: "Thermal processing, roasting, and size reduction for agricultural products including grains, seeds, and agro-commodities.",
+    icon: Flame,
+    name: "Flavour & Fine Ingredients — Spice",
+    useCases: "Chopper mills and pulverisers for chillies, turmeric, coriander, cumin, pepper, and mixed spice blends — a core application sector.",
+  },
+  {
+    icon: UtensilsCrossed,
+    name: "Food & Beverage",
+    useCases: "Size reduction and blending for sugar, cocoa, coffee, starches, dairy powders, and a broad range of food processing applications.",
+  },
+  {
+    icon: FlaskConical,
+    name: "Specialty Chemicals",
+    useCases: "Precision milling and dust-controlled handling for specialty chemical powders, catalysts, and performance additives.",
+  },
+  {
+    icon: Layers,
+    name: "Coatings & Polymers",
+    useCases: "Fine grinding and classification of pigments, resins, polymer powders, and coating intermediates to exacting particle specifications.",
+  },
+  {
+    icon: Hammer,
+    name: "Metallurgy & Steel",
+    useCases: "Robust systems for ferro-alloys, metal powders, slag processing, and refractory materials in demanding metallurgical environments.",
+  },
+  {
+    icon: Droplets,
+    name: "Petrochemicals",
+    useCases: "Conveying, screening, and emission control systems for petrochemical feedstocks, carbon black, and polymer granules.",
+  },
+  {
+    icon: Sprout,
+    name: "Agrochemicals",
+    useCases: "Contained milling and blending for pesticide powders, herbicide granules, and technical-grade agrochemical formulations.",
+  },
+  {
+    icon: Wheat,
+    name: "Agricultural Inputs",
+    useCases: "Processing and handling solutions for fertilisers, micronutrients, soil conditioners, and crop protection powder inputs.",
   },
 ];
 
