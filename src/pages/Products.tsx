@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Cog, ArrowRight, Zap, Filter, Blend } from "lucide-react";
+import { ChevronDown, Cog, ArrowRight, Filter, Blend, Archive, Wind } from "lucide-react";
 
 // ─── Products Page Hero Animation ────────────────────────────────
 const heroParticles = Array.from({ length: 18 }, (_, i) => ({
@@ -11,10 +11,12 @@ const heroParticles = Array.from({ length: 18 }, (_, i) => ({
 }));
 
 const processNodes = [
-  { label: "Grind",  sub: "7 Products", angle: -90,  glyph: "G" },
-  { label: "Convey", sub: "5 Products", angle:   0,  glyph: "C" },
-  { label: "Screen", sub: "4 Products", angle:  90,  glyph: "S" },
-  { label: "Blend",  sub: "1 Product",  angle: 180,  glyph: "B" },
+  { label: "Grind",   sub: "6 Products", angle: -90,  glyph: "G" },
+  { label: "Convey",  sub: "5 Products", angle: -30,  glyph: "C" },
+  { label: "Screen",  sub: "4 Products", angle:  30,  glyph: "S" },
+  { label: "Blend",   sub: "2 Products", angle:  90,  glyph: "B" },
+  { label: "Store",   sub: "1 Product",  angle: 150,  glyph: "St" },
+  { label: "Dedust",  sub: "2 Products", angle: -150, glyph: "D" },
 ];
 
 const R_ORBIT = 132;
@@ -67,11 +69,11 @@ const ProcessFlowVisual = () => (
         return (
           <motion.circle
             key={`dot-${i}`}
+            cx={SV_CX} cy={SV_CY}
             r="3.5"
             fill="hsl(42,100%,65%)"
             opacity="0.9"
             filter="url(#glow)"
-            initial={{ cx: SV_CX, cy: SV_CY }}
             animate={{ cx: [SV_CX, x, SV_CX], cy: [SV_CY, y, SV_CY] }}
             transition={{
               duration: 2.4,
@@ -153,9 +155,9 @@ const ProcessFlowVisual = () => (
             </text>
             {/* Sub-label outside node */}
             <text
-              x={node.angle === 0 ? x + 32 : node.angle === 180 ? x - 32 : x}
-              y={node.angle === -90 ? y - 32 : node.angle === 90 ? y + 32 : y + 1}
-              textAnchor={node.angle === 0 ? "start" : node.angle === 180 ? "end" : "middle"}
+              x={node.angle > -60 && node.angle < 60 ? x + 32 : node.angle > 120 || node.angle < -120 ? x - 32 : x}
+              y={node.angle < -60 && node.angle > -120 ? y - 30 : node.angle > 60 && node.angle < 120 ? y + 30 : y + 1}
+              textAnchor={node.angle > -60 && node.angle < 60 ? "start" : node.angle > 120 || node.angle < -120 ? "end" : "middle"}
               fill="hsl(42,100%,55%)" fontSize="8" fontFamily="Rajdhani,sans-serif" fontWeight="600"
               opacity="0.7"
             >
@@ -167,6 +169,7 @@ const ProcessFlowVisual = () => (
 
       {/* Orbiting small dot around the outer ring */}
       <motion.circle
+        cx={SV_CX + 168} cy={SV_CY}
         r="4" fill="hsl(42,100%,65%)" filter="url(#glow)"
         animate={{
           cx: [SV_CX + 168, SV_CX, SV_CX - 168, SV_CX, SV_CX + 168],
@@ -201,45 +204,39 @@ const categories: Category[] = [
     products: [
       {
         name: "Bag Emptying Machine",
-        image: "/images/products/bag-emptying-machine.jpg",
+        image: "/images/products/BagEmptyingMachine.png",
         description: "Automatic Bag Slitting Machine purpose-built to process single and multi-layer bags with speed and precision. Integrates heavy-duty cutter, rotating trommel screen, belt conveyor, dust containment, empty bag compactor, and powder discharge screw conveyor.",
         specs: ["Dust-proof environment", "MOC: MS, SS304/SS316", "Size: 4.5m × 1.75m × 3.5m", "Human safety interlock"],
       },
       {
         name: "Air Classifying Mill (ACM)",
-        image: "/images/products/acm.png",
+        image: "/images/products/AirClassifyingMill%20(ACM).jpg",
         description: "High-performance impact grinding mill with integrated dynamic classifier for precise particle size control. Rotor disc with impact hammers handles primary size reduction while built-in classifier wheel continuously recirculates oversize particles.",
         specs: ["Models: 5ACM to 120ACM", "Power: 5–120 HP", "Fineness: 3–3000 MESH", "Cast & fabricated casing"],
       },
       {
         name: "Air Swept Mill",
-        image: "/images/products/air-swept-mill.png",
+        image: "/images/products/AirSweptMill.jpg",
         description: "Specifically designed for size reduction of soft to medium-hard, fibrous, and slightly moist materials. Air sweep assists in product discharge and cooling, ideal for heat-sensitive or sticky materials.",
         specs: ["Models: ASM-15 to ASM-40", "Power: 20–75 HP", "Fineness: 40–80mm"],
       },
       {
-        name: "Chopper Mills",
-        image: "/images/products/chopper-mill.png",
+        name: "Chopper Mill",
+        image: "/images/products/ChopperMill.png",
         description: "Engineered for controlled pre-cutting and size reduction of fibrous, leafy, or irregular materials to 10–20mm or finer. Operates at lower rotor speeds to minimize heat — preserving essential oils and natural aroma.",
         specs: ["Models: CHM 8 to CHM 32", "Ideal for chillies, herbs, dried vegetables", "Minimal fines generation"],
       },
       {
-        name: "Pulveriser Mills",
-        image: "/images/products/pulveriser.png",
+        name: "Pulveriser Mill",
+        image: "/images/products/PulveriserMill.jpg",
         description: "Versatile impact mill for irregularly shaped, coarse, and granular materials from soft to medium-hard. Widely used across food, pharma, and chemical industries.",
         specs: ["Power: 1–180 HP", "Fineness: 20–200 MESH", "Models: Bantam to Double 4", "Sugar, spices, chemicals, pharma"],
       },
       {
-        name: "Crushers",
-        image: "/images/products/crusher.png",
+        name: "Crusher",
+        image: "/images/products/CrusherMill.png",
         description: "Built for demanding size-reduction applications, processing brittle to medium-hard materials. Available in rigid hammer (P version) and swinging hammer (D version) configurations.",
         specs: ["Capacity: 1.5–15 ton/hr", "Power: 11–90 kW", "Feed size up to 150mm", "Double roll type available"],
-      },
-      {
-        name: "Roasters",
-        image: "/images/products/roaster.png",
-        description: "Industrial thermal processing machines for spice, food, and agro-processing. Efficiently reduces moisture, enhances flavour profiles, and improves shelf life by inhibiting microbial activity.",
-        specs: ["Capacity: 22–5000 litres", "Temp: up to 250°C", "MOC: SS/MS", "240V/440V options"],
       },
     ],
   },
@@ -248,32 +245,31 @@ const categories: Category[] = [
     icon: ArrowRight,
     products: [
       {
-        name: "Belt Conveyors",
-        image: "/images/products/belt-conveyor.jpg",
+        name: "Belt Conveyor",
+        image: "/images/products/BeltConveyor.png",
         description: "Built for continuous, high-volume bulk material transfer across processing lines. Heavy-duty frames and premium belting deliver consistent, reliable performance.",
         specs: ["Width: 500–2000mm", "Capacity: 5–800 TPH"],
       },
       {
-        name: "Bucket Elevators",
-        image: "/images/products/bucket-elevator.png",
+        name: "Bucket Elevator",
+        image: "/images/products/BucketElevatorTwinLeg.png",
         description: "Engineered for vertical material handling with dependable, high-efficiency transport. Available in belt type, single-leg chain, twin-leg chain, and Z-type configurations.",
         specs: ["Capacity: up to 100 TPH", "Models: COBE-150 to COBE-600", "Multiple configurations"],
       },
       {
-        name: "Chain Conveyors",
-        image: "/images/products/chain-conveyor.png",
+        name: "Chain Conveyor",
         description: "Designed for reliable movement of heavy, abrasive, or high-temperature bulk materials where belt conveyors are not suitable.",
         specs: ["Width: 500–2000mm", "Capacity: up to 80 TPH", "Max incline: 30°", "Models: DC-200 to DC-600"],
       },
       {
-        name: "Screw Conveyors",
-        image: "/images/products/screw-conveyor.png",
+        name: "Screw Conveyor",
+        image: "/images/products/ScrewConveyor.jpg",
         description: "Effective and controlled movement of powders, granules, and bulk solids in horizontal, vertical, and inclined orientations. Available in U-type open and O-type closed configurations.",
         specs: ["Width: 100–600mm", "Capacity: up to 15 TPH", "Types: Horizontal, Vertical, Inclined, Reversible"],
       },
       {
         name: "Pneumatic Conveying",
-        image: "/images/products/pneumatic-conveying.png",
+        image: "/images/products/PneumaticConveyingSystems.jpg",
         description: "Complete pneumatic conveying systems for enclosed, dust-free transfer of powders and granular materials across processing facilities.",
         specs: ["Dense & dilute phase", "Custom engineered", "Rotary airlock valves included"],
       },
@@ -285,27 +281,27 @@ const categories: Category[] = [
     products: [
       {
         name: "Vibrating Screens",
-        image: "/images/products/vibrating-screen.png",
+        image: "/images/products/GyroShifter.png",
         description: "Deliver reliable, high-throughput material classification across a broad range of particle sizes. Precision-engineered screen decks with robust drive mechanisms.",
         specs: ["Capacity: 150–200 TPH", "Models: CHVS-600 to CHVS-2400mm", "Single & multi-deck", "Anti-blinding arrangement"],
       },
       {
-        name: "Gyro Sifters",
-        image: "/images/products/gyro-sifter.png",
-        description: "High-precision, multi-plane screening machine for accurate classification, de-dusting, and quality control. Simultaneous vertical, circular, and horizontal vibrations.",
-        specs: ["Single, Double & Triple Ribbon", "Ultrasonic anti-blinding option", "SS construction", "Food & pharma grade"],
-      },
-      {
         name: "Graders",
-        image: "/images/products/grader.png",
+        image: "/images/products/Graders.png",
         description: "Industrial vibrating screen machine for high-precision, multi-layer separation, size grading, and impurity removal of powders, grains, and granules.",
         specs: ["Unbalanced motor driven", "Multi-layer classification", "Coarse, medium & fine fractions"],
       },
       {
         name: "Cyclone Separators",
-        image: "/images/products/cyclone-separator.jpg",
+        image: "/images/products/CycloneSeparators.png",
         description: "Highly efficient removal of particulate matter from gas or air streams using centrifugal force. Available in single and multi-cyclone configurations.",
         specs: ["Custom dust loading specs", "Single & multi-cyclone", "High efficiency"],
+      },
+      {
+        name: "Destoner",
+        image: "/images/products/Destoner.png",
+        description: "Gravity-based separation machine that effectively removes stones, metals, and heavy impurities from grains, pulses, and other agricultural products prior to processing.",
+        specs: ["Gravity separation principle", "Adjustable deck angle", "High throughput capacity"],
       },
     ],
   },
@@ -315,9 +311,45 @@ const categories: Category[] = [
     products: [
       {
         name: "Ribbon Blenders",
-        image: "/images/products/ribbon-blender.png",
+        image: "/images/products/RibbonBlenders.png",
         description: "Industrial mixing machines for homogeneous blending of dry powders, granules, and pastes. Helical inner and outer ribbon agitators work in opposition for thorough, uniform mixing.",
         specs: ["MOC: SS304/316 contact parts", "Food, pharma & chemical grade", "Batch processing"],
+      },
+      {
+        name: "Roasters",
+        image: "/images/products/Roasters.png",
+        description: "Industrial thermal processing machines for spice, food, and agro-processing. Efficiently reduces moisture, enhances flavour profiles, and improves shelf life by inhibiting microbial activity.",
+        specs: ["Capacity: 22–5000 litres", "Temp: up to 250°C", "MOC: SS/MS", "240V/440V options"],
+      },
+    ],
+  },
+  {
+    title: "Storage",
+    icon: Archive,
+    products: [
+      {
+        name: "Silos",
+        image: "/images/products/Silos.png",
+        description: "Heavy-duty storage silos for bulk powders, granules, and agricultural commodities. Designed for safe, efficient storage with airtight construction and easy discharge.",
+        specs: ["Custom capacities", "MOC: MS / SS304", "Cone & flat bottom options", "Level indication systems"],
+      },
+    ],
+  },
+  {
+    title: "Dedusting",
+    icon: Wind,
+    products: [
+      {
+        name: "Bag Filters",
+        image: "/images/products/BagFilters.png",
+        description: "High-efficiency pulse-jet bag filter systems for dust collection and air pollution control. Ensure clean working environments and regulatory compliance across processing plants.",
+        specs: ["Filtration efficiency: >99%", "Pulse-jet cleaning", "MOC: MS / SS304", "Custom air-to-cloth ratio"],
+      },
+      {
+        name: "Centrifugal Fans",
+        image: "/images/products/CentrifugalFans.png",
+        description: "Industrial centrifugal fans engineered for high-volume air movement in dedusting, pneumatic conveying, and ventilation systems. Robust construction for continuous duty.",
+        specs: ["Custom CFM & static pressure", "MOC: MS / SS304", "Direct & belt-driven options", "ATEX versions available"],
       },
     ],
   },
@@ -458,10 +490,12 @@ const Products = () => {
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.7 }}
               >
                 {[
-                  { icon: Cog,      label: "Grinding",  count: "7 machines" },
-                  { icon: ArrowRight,label: "Conveying", count: "5 systems"  },
-                  { icon: Filter,   label: "Screening", count: "4 machines" },
-                  { icon: Blend,    label: "Mixing",    count: "1 machine"  },
+                  { icon: Cog,       label: "Grinding",  count: "6 machines" },
+                  { icon: ArrowRight, label: "Conveying", count: "5 systems"  },
+                  { icon: Filter,    label: "Screening", count: "4 machines" },
+                  { icon: Blend,     label: "Mixing",    count: "2 machines" },
+                  { icon: Archive,   label: "Storage",   count: "1 system"   },
+                  { icon: Wind,      label: "Dedusting", count: "2 systems"  },
                 ].map(({ icon: Icon, label, count }) => (
                   <div key={label} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-primary/15 bg-primary/5 hover:border-primary/35 hover:bg-primary/10 transition-all duration-300">
                     <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
