@@ -106,10 +106,10 @@ const HomeProducts = () => (
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: ci * 0.06 + ii * 0.05, duration: 0.4 }}
-                    className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/40 transition-all duration-300 px-4 py-4 cursor-pointer"
+                    className="group rounded-xl border border-border bg-card/50 hover:bg-card hover:border-green-500/40 transition-all duration-300 px-4 py-4 cursor-pointer"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary mb-3 transition-colors" />
-                    <p className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500/50 group-hover:bg-green-400 mb-3 transition-colors" />
+                    <p className="font-display text-sm font-semibold text-foreground group-hover:text-green-400 transition-colors leading-snug">
                       {item}
                     </p>
                   </motion.div>
